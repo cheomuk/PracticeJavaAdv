@@ -3,29 +3,29 @@ package com.example.praticejavaadv.interrupt;
 import static com.example.praticejavaadv.util.MyLogger.log;
 import static com.example.praticejavaadv.util.ThreadUtils.sleep;
 
-public class ThreadStopMain {
+public class ThreadStopMainV3 {
 
     public static void main(String[] args) {
         MyTask myTask = new MyTask();
         Thread thread = new Thread(myTask, "work");
         thread.start();
 
-        sleep(4000);
-        log("작업 중단 지시 runFlag = false");
-        myTask.runFlag = false; // 중단 지시가 내려져도 바로 중단되지 않는다.
+        sleep(100);
+        log("작업 중단 지시 thread.interrupt()");
+        thread.interrupt();
+        log("work 스레드 인터럽트 상태1 = " + thread.isInterrupted());
     }
 
     static class MyTask implements Runnable {
 
-        volatile boolean runFlag = true;
-
         @Override
         public void run() {
 
-            while (runFlag) {
+            while (!Thread.currentThread().isInterrupted()) {   // 인터럽트 상태 변경 x
                 log("작업 중");
-                sleep(3000);
             }
+
+            log("work 스레드 인터럽트 상태2 = " + Thread.currentThread().isInterrupted());   // true 출력
 
             log("자원 정리");
             log("자원 종료");
