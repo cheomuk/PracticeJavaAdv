@@ -14,8 +14,8 @@ public class BankAccountV2 implements BankAccount {
     @Override
     public synchronized boolean withdraw(int amount) {   // 임계 영역이기 때문에 동기화 키워드를 추가함.
         log("거래 시작" + getClass().getSimpleName());
-        // 잔고가 출금액보다 적으면, 진행하면 안 됨
-        // 검증 시작
+
+        // 임계 영역 시작
         log("[검증 시작]");
         if (balance < amount) {
             log("검증 실패 출금액 : " + amount + ", 잔액 : " + balance);
@@ -28,8 +28,9 @@ public class BankAccountV2 implements BankAccount {
         balance -= amount;
 
         log("[출금 완료] 출금액 : " + amount + ", 잔액 : " + balance);
-        log("거래 종료");
+        // 임계 영역 종료
 
+        log("거래 종료");
         return true;
     }
 
