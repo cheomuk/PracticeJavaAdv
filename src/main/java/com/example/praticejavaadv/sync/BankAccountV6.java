@@ -2,6 +2,7 @@ package com.example.praticejavaadv.sync;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.TimeUnit;
 
 import static com.example.praticejavaadv.util.MyLogger.log;
 import static com.example.praticejavaadv.util.ThreadUtils.sleep;
