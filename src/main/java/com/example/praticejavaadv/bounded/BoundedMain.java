@@ -2,6 +2,8 @@ package com.example.praticejavaadv.bounded;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
 import static com.example.praticejavaadv.util.MyLogger.log;
 import static com.example.praticejavaadv.util.ThreadUtils.sleep;
@@ -15,7 +17,11 @@ public class BoundedMain {
         // BoundedQueue queue = new BoundedQueueV3(2);
         // BoundedQueue queue = new BoundedQueueV4(2);
         // BoundedQueue queue = new BoundedQueueV5(2);
-        BoundedQueue queue = new BoundedQueueV6_1(2);
+        // BoundedQueue queue = new BoundedQueueV6_1(2);
+        // BoundedQueue queue = new BoundedQueueV6_2(2);
+        // BoundedQueue queue = new BoundedQueueV6_3(2);
+        BoundedQueue queue = new BoundedQueueV6_4(2);
+        // BlockingQueue<String> queue = new ArrayBlockingQueue<>(2);  // 바로 사용 가능하지만 아래 코드들을 고쳐야 함.
 
         // 2. 생산자, 소비자 실행 순서 선택, 반드시 하나만 선택!
         producerFirst(queue);   // 생산자 먼저 실행
