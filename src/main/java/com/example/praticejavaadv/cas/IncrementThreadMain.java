@@ -12,6 +12,9 @@ public class IncrementThreadMain {
 
     public static void main(String[] args) throws InterruptedException {
         test(new BasicInteger());   // 원자적인 계산이 아니었으므로 당연히 1000이 나오지 않는다!
+        test(new VolatileInteger());    // volatile 을 붙여도 똑같다. 연산 자체가 나누어져 있기 때문에 효과가 없는 것이다.
+        test(new SyncInteger());    // 드디어 1000이 나온다. (임계 영역 구축)
+        test(new MyAtomicInteger());    // 여러 스레드가 해당 값을 공유해야 할 때 사용하면 좋다.
     }
 
     private static void test(IncrementInteger incrementInteger) throws InterruptedException {
