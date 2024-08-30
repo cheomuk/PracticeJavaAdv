@@ -1,4 +1,4 @@
-package com.example.praticejavaadv.cas;
+package com.example.praticejavaadv.cas.increment;
 
 public interface IncrementInteger {
 

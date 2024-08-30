@@ -1,4 +1,6 @@
-package com.example.praticejavaadv.cas;
+package com.example.praticejavaadv.cas.increment;
+
+import com.example.praticejavaadv.cas.increment.IncrementInteger;
 
 public class SyncInteger implements IncrementInteger {
 
